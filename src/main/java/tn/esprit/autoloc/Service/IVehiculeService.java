@@ -13,4 +13,12 @@ public interface IVehiculeService {
     Vehicule recupererVehiculeByid(long idVehicule);
 
     @Nullable Vehicule modifierVehicule(Vehicule vehicule);
+
+    Vehicule affecterVehicule(Long idVehicule, Long idAgence);
+
+    Vehicule affecterEquipement(Long idVehicule, Long idEquipement);
+
+    Vehicule desaffecterEquipement(Long idVehicule, Long idEquipement);
+
+
 }

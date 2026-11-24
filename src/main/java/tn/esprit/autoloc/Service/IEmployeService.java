@@ -13,4 +13,8 @@ public interface IEmployeService {
     employe recupererEmployeByid(long idEmploye);
 
     @Nullable employe modifierEmploye(employe employe);
+
+    employe desaffecterEmploye(Long idEmploye);
+
+    employe affecterEmploye(Long idEmploye, Long idAgence);
 }

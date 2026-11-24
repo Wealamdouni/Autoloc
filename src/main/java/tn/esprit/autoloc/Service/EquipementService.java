@@ -30,4 +30,5 @@ public class EquipementService implements tn.esprit.autoloc.Service.IEquipementS
     public @Nullable equipement modifierEquipement(equipement equipement) {
         return null;
     }
+
 }

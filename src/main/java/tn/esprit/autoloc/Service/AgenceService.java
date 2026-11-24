@@ -6,12 +6,13 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.Entities.agence;
 import tn.esprit.autoloc.Repositories.agenceRepository;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AgenceService implements tn.esprit.autoloc.Service.IAgenceService {
     private final agenceRepository agenceRepo;
 
@@ -30,4 +31,5 @@ public class AgenceService implements tn.esprit.autoloc.Service.IAgenceService {
     public @Nullable agence modifierAgence(agence agence) {
         return null;
     }
+
 }
