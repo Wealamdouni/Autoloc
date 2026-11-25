@@ -1,5 +1,7 @@
+
 package tn.esprit.autoloc.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,30 +14,31 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 public class reservation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReservation;
+
     @Column(nullable = false)
     private LocalDate dateDebut;
+
     @Column(nullable = false)
     private LocalDate dateFin;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private StatueReservation statut;
 
+    @ToString.Exclude
     @ManyToOne
     private Vehicule vehicule;
 
+    @ToString.Exclude
+    @JsonBackReference("client-reservations")
     @ManyToOne
     private client client;
 
-    @ManyToOne
-    private Vehicule vehicle;
-
-
+    @ToString.Exclude
     @OneToOne
     private contrat contrat;
-
 }
-
-

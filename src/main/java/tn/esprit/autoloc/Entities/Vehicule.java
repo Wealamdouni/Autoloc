@@ -1,10 +1,13 @@
+
 package tn.esprit.autoloc.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -15,43 +18,49 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Vehicule {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVehicule;
+
     @Column(nullable = false, unique = true, length = 20)
     private String immatriculation;
+
     @Column(nullable = false, length = 50)
     private String marque;
+
     @Column(nullable = false, length = 50)
     private String modele;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private CategorieVehicule categorie;
+
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal tarifJournalier;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private StatueVehicule statut;
+
+    @JsonIgnore
     @ManyToOne
     private agence agence;
 
-    @OneToMany(mappedBy = "vehicle")
+    @JsonIgnore
+    @OneToMany(mappedBy = "vehicule")
     private Set<maintenance> maintenances;
 
-    @OneToMany(mappedBy = "vehicle")
+    @JsonIgnore
+    @OneToMany(mappedBy = "vehicule")
     private Set<reservation> reservations;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
-            name = "vehicle_equipment",
-            joinColumns = @JoinColumn(name = "vehicle_id"),
-            inverseJoinColumns = @JoinColumn(name = "equipment_id"))
-    private Set <equipement> equipments;
-
-
+            name = "vehicule_equipement",
+            joinColumns = @JoinColumn(name = "vehicule_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipement_id")
+    )
+    private Set<equipement> equipments;
 }
-
-
-
-
-

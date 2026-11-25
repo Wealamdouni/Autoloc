@@ -22,7 +22,7 @@ public class maintenance {
     private String description;
 
     @ManyToOne
-    private Vehicule vehicle;
+    private Vehicule vehicule;
 
 }
 
